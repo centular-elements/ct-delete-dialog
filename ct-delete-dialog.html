@@ -20,7 +20,7 @@ Delete dialog that takes an ID
       </p>
       <div class="buttons">
         <paper-button class="btn btn-default" dialog-dismiss autofocus>Cancel</paper-button>
-        <paper-button class="btn btn-danger"  dialog-confirm on-tap="handleTap">Delete</paper-button>
+        <paper-button class="btn btn-danger"  dialog-confirm on-tap="_handleDelete">Delete</paper-button>
       </div>
     </paper-dialog>
  </template>
@@ -42,20 +42,11 @@ Delete dialog that takes an ID
         key:  {
           type: String,
           notify: true
-        },
-        onTapFunction: {
-          type : String,
-          value: "_alertId"
-        },
+        }
       },
-      handleTap: function() {
-         alert(this.key);
-          this.fire('alertId', this.key);
-      },
-      alertId : function(resourceId){
-          alert("This is the ID to be deleted: " + resourceId);
-      }
-
+      _handleDelete: function(e, detail) {
+          this.fire('delete', {id : this.key});
+        },
     });
   </script>
 </dom-module>

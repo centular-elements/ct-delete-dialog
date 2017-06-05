@@ -19,8 +19,13 @@
     <div class="vertical-section-container centered">
       <h3>Basic ct-delete-dialog demo</h3>
       <demo-snippet>
-        <template>
-          <ct-delete-dialog subject"Distributor" resource="First distrubutor" key"123456786123456"></ct-delete-dialog>
+        <template >
+          <ct-delete-dialog id='deleteDialog'  subject"Distributor" resource="First distrubutor" key="123456786123456"></ct-delete-dialog>
+          <script>
+            document.querySelector('#deleteDialog').addEventListener('delete', function (e) {
+              alert('Deleted resource ' + e.detail.id);
+            })
+          </script>
         </template>
       </demo-snippet>
     </div>
