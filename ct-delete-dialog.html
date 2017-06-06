@@ -10,6 +10,7 @@ Delete dialog that takes an ID
 <dom-module id="ct-delete-dialog">
   <template>
     <paper-dialog
+            id='paperDeleteDialog'
             modal
             no-cancel-on-esc-key
             no-cancel-on-outside-click
@@ -19,7 +20,7 @@ Delete dialog that takes an ID
         Are you sure you want to delete [[resource]]?
       </p>
       <div class="buttons">
-        <paper-button class="btn btn-default" dialog-dismiss autofocus>Cancel</paper-button>
+        <paper-button class="btn btn-default" dialog-dismiss autofocus on-tap="close">Cancel</paper-button>
         <paper-button class="btn btn-danger"  dialog-confirm on-tap="_handleDelete">Delete</paper-button>
       </div>
     </paper-dialog>
@@ -47,6 +48,12 @@ Delete dialog that takes an ID
       _handleDelete: function(e, detail) {
           this.fire('delete', {id : this.key});
         },
+      open : function() {
+        this.$.paperDeleteDialog.open();
+      },
+      close : function(){
+        this.$.paperDeleteDialog.close();
+      },
     });
   </script>
 </dom-module>
