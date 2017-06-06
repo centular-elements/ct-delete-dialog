@@ -54,6 +54,11 @@ Delete dialog that takes an ID
       close : function(){
         this.$.paperDeleteDialog.close();
       },
+      _patchOverlay: function (e) {
+          if (e.target.withBackdrop) {
+              e.target.parentNode.insertBefore(e.target.backdropElement, e.target);
+          }
+      }
     });
   </script>
 </dom-module>
